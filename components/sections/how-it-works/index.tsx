@@ -2,7 +2,6 @@
 
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
-import { Cover } from "@aceternity/cover";
 import { AnimatedBeam } from "@vert/components/ui/magic/animated-beam";
 import { IconSearch, IconSettings, IconChartLine } from "@tabler/icons-react";
 
@@ -124,20 +123,6 @@ export function HowItWorksSection() {
             );
           })}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-          animate={isInView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
-          transition={{ delay: 0.7, duration: 0.5, ease: "easeOut" }}
-          className="mt-16 text-center"
-        >
-          <div className="inline-flex items-center gap-2 text-lg text-muted-foreground">
-            👉 tudo{" "}
-            <Cover className="font-semibold">prático</Cover>,{" "}
-            <Cover className="font-semibold">direto</Cover>,{" "}
-            <Cover className="font-semibold">aplicável</Cover>.
-          </div>
-        </motion.div>
       </div>
     </section>
   );

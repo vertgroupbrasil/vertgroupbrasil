@@ -12,14 +12,15 @@ import {
 } from "@tabler/icons-react";
 import { MagicCard } from "@vert/components/ui/magic/magic-card";
 import { OrbitingCircles } from "@vert/components/ui/magic/orbiting-circles";
+import { AuroraText } from "@vert/components/ui/magic/aurora-text";
 
 const LEFT_CARD = {
   title: "Boas ideias não deveriam morrer dentro das empresas.",
   subtitle: "Quando estruturadas, dores específicas podem se transformar em:",
   items: [
-    "produtos escaláveis",
-    "soluções reutilizáveis",
-    "novas linhas de receita",
+    "Produtos escaláveis",
+    "Soluções reutilizáveis",
+    "Novas linhas de receita",
   ],
 };
 
@@ -27,9 +28,9 @@ const RIGHT_CARD = {
   title: "Com quem trabalhamos",
   subtitle: "Empreendedores e investidores que valorizam:",
   items: [
-    "decisões responsáveis",
-    "uso inteligente de tempo e capital",
-    "inovação com propósito — não por impulso",
+    "Decisões responsáveis",
+    "Uso inteligente de tempo e capital",
+    "Inovação com propósito — não por impulso",
   ],
 };
 
@@ -102,7 +103,10 @@ export function PartnershipSection() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
-            Crescemos quando você cresce.
+            <AuroraText colors={["#10b981", "#14b8a6", "#059669", "#34d399"]} speed={1.5}>
+              Crescemos
+            </AuroraText>{" "}
+            quando você cresce.
           </h2>
           <p className="mt-4 text-xl text-muted-foreground">
             Por isso, trabalhamos em parceria — não como fornecedores.

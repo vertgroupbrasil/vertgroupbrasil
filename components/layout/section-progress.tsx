@@ -7,11 +7,13 @@ import { cn } from "@vert/lib/utils";
 const SECTIONS = [
   { id: "hero", label: "Início" },
   { id: "problema", label: "Problema" },
-  { id: "solucoes", label: "Soluções" },
+  { id: "solucao", label: "Solução" },
   { id: "como-funciona", label: "Processo" },
-  { id: "resultados", label: "Resultados" },
+  { id: "solucoes", label: "Método" },
   { id: "parceria", label: "Parceria" },
+  { id: "resultados", label: "Resultados" },
   { id: "cta", label: "Contato" },
+  { id: "faq", label: "FAQ" },
 ];
 
 export function SectionProgress() {

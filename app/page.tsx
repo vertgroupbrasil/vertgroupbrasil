@@ -22,8 +22,8 @@ export default function Page() {
         <SolutionSection />
         <HowItWorksSection />
         <WhatWeDoSection />
-        <ResultsSection />
         <PartnershipSection />
+        <ResultsSection />
         <CTASection />
         <FAQSection />
       </main>

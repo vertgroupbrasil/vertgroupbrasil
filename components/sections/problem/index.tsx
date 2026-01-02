@@ -13,23 +13,24 @@ import {
   IconBug,
 } from "@tabler/icons-react";
 import { PointerHighlight } from "@aceternity/pointer-highlight";
+import { Highlighter } from "@vert/components/ui/magic/highlighter";
 
 const PROBLEMS = [
   {
     icon: IconAlertTriangle,
-    text: "processos estão soltos",
+    text: "Processos estão soltos",
   },
   {
     icon: IconMoodConfuzed,
-    text: "decisões são feitas no improviso",
+    text: "Decisões são feitas no improviso",
   },
   {
     icon: IconRepeat,
-    text: "retrabalho e erros se repetem",
+    text: "Retrabalho e erros se repetem",
   },
   {
     icon: IconEyeOff,
-    text: "oportunidades passam despercebidas",
+    text: "Oportunidades passam despercebidas",
   },
 ];
 
@@ -138,7 +139,7 @@ export function ProblemSection() {
     <section 
       ref={ref}
       id="problema"
-      className="relative py-24 px-4 overflow-hidden"
+      className="relative py-24 px-4"
     >
       {/* Floating icons negativos */}
       <FloatingNegativeIcons />
@@ -151,7 +152,17 @@ export function ProblemSection() {
           className="text-center"
         >
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
-            Seu negócio pode crescer ainda mais
+            Seu negócio pode crescer{" "}
+            <Highlighter
+              action="underline"
+              color="#ef4444"
+              strokeWidth={3}
+              animationDuration={800}
+              iterations={1}
+              isView={true}
+            >
+              ainda mais
+            </Highlighter>
           </h2>
           <p className="mt-4 text-xl text-muted-foreground">
             — mas hoje:

@@ -12,15 +12,15 @@ import { FloatingCharts } from "./floating-charts";
 const RESULTS = [
   {
     icon: IconChecks,
-    text: "processos claros e organizados",
+    text: "Processos claros e organizados",
   },
   {
     icon: IconChartLine,
-    text: "operação mais previsível",
+    text: "Operação mais previsível",
   },
   {
     icon: IconTrendingUp,
-    text: "base real para escalar",
+    text: "Base real para escalar",
   },
 ];
 
@@ -69,16 +69,13 @@ export function ResultsSection() {
                 {/* Glow de fundo no hover */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
 
-                <div className="relative flex items-start gap-4">
+                <div className="relative flex items-center gap-4">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
                     <Icon className="h-6 w-6" />
                   </div>
-                  <div className="flex flex-col">
-                    <span className="text-primary font-bold text-lg">✔</span>
-                    <span className="text-lg font-medium text-foreground">
-                      {result.text}
-                    </span>
-                  </div>
+                  <span className="text-lg font-medium text-foreground">
+                    {result.text}
+                  </span>
                 </div>
               </motion.div>
             );
