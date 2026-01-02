@@ -13,6 +13,7 @@ import {
 import { MagicCard } from "@vert/components/ui/magic/magic-card";
 import { OrbitingCircles } from "@vert/components/ui/magic/orbiting-circles";
 import { AuroraText } from "@vert/components/ui/magic/aurora-text";
+import { Highlighter } from "@vert/components/ui/magic/highlighter";
 
 const LEFT_CARD = {
   title: "Boas ideias não deveriam morrer dentro das empresas.",
@@ -106,7 +107,19 @@ export function PartnershipSection() {
             <AuroraText colors={["#10b981", "#14b8a6", "#059669", "#34d399"]} speed={1.5}>
               Crescemos
             </AuroraText>{" "}
-            quando você cresce.
+            quando{" "}
+            <Highlighter  
+              action="circle"
+              color="#10b981"
+              strokeWidth={3}
+              animationDuration={1000}
+              iterations={2}
+              padding={11}
+              isView={true}
+            >
+              você
+            </Highlighter>{" "}
+            cresce.
           </h2>
           <p className="mt-4 text-xl text-muted-foreground">
             Por isso, trabalhamos em parceria — não como fornecedores.
