@@ -12,10 +12,11 @@ export interface NavItem {
 
 export const NAV_ITEMS: NavItem[] = [
   { name: "O Problema", link: "#problema" },
-  { name: "Soluções", link: "#solucoes" },
+  { name: "Solução", link: "#solucao" },
   { name: "Como Funciona", link: "#como-funciona" },
+  { name: "Método", link: "#solucoes" },
   { name: "Resultados", link: "#resultados" },
-  { name: "Parceria", link: "#parceria" },
+  { name: "FAQ", link: "#faq" },
 ];
 
 export const BRAND = {

@@ -151,7 +151,7 @@ export function ProblemSection() {
           className="text-center"
         >
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
-            Seu negócio pode crescer mais
+            Seu negócio pode crescer ainda mais
           </h2>
           <p className="mt-4 text-xl text-muted-foreground">
             — mas hoje:
