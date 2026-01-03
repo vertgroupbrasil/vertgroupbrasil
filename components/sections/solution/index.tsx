@@ -88,26 +88,6 @@ export function SolutionSection() {
           >
             Vert trabalha em duas frentes — você pode precisar de uma ou das duas:
           </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 10, filter: "blur(8px)" }}
-            animate={isInView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
-            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-            className="mt-6 flex flex-wrap items-center justify-center gap-3"
-          >
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm text-foreground">
-              <IconTargetArrow className="h-4 w-4 text-primary" />
-              Clareza de processo
-            </div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm text-foreground">
-              <IconChartLine className="h-4 w-4 text-primary" />
-              Métricas que guiam
-            </div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm text-foreground">
-              <IconSparkles className="h-4 w-4 text-primary" />
-              Menos retrabalho
-            </div>
-          </motion.div>
         </div>
 
         {/* Cards */}
@@ -204,6 +184,27 @@ export function SolutionSection() {
               );
             })}
           </div>
+
+          {/* Badges */}
+          <motion.div
+            initial={{ opacity: 0, y: 10, filter: "blur(8px)" }}
+            animate={isInView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+            transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+            className="mt-10 flex flex-wrap items-center justify-center gap-3"
+          >
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm text-foreground">
+              <IconTargetArrow className="h-4 w-4 text-primary" />
+              Clareza de processo
+            </div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm text-foreground">
+              <IconChartLine className="h-4 w-4 text-primary" />
+              Métricas que guiam
+            </div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm text-foreground">
+              <IconSparkles className="h-4 w-4 text-primary" />
+              Menos retrabalho
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
