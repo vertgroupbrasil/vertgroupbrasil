@@ -4,6 +4,7 @@ import { SolutionSection } from "@vert/components/sections/solution";
 import { HowItWorksSection } from "@vert/components/sections/how-it-works";
 import { WhatWeDoSection } from "@vert/components/sections/what-we-do";
 import { ResultsSection } from "@vert/components/sections/results";
+import { CaseStudiesSection } from "@vert/components/sections/case-studies";
 import { PartnershipSection } from "@vert/components/sections/partnership";
 import { CTASection } from "@vert/components/sections/cta";
 import { FAQSection } from "@vert/components/sections/faq";
@@ -23,6 +24,7 @@ export default function Page() {
         <HowItWorksSection />
         <WhatWeDoSection />
         <PartnershipSection />
+        <CaseStudiesSection />
         <ResultsSection />
         <CTASection />
         <FAQSection />

@@ -86,20 +86,12 @@ export function LandingNavbar() {
           ))}
           <div className="mt-4 flex w-full flex-col gap-2">
             <NavbarButton
-              variant="secondary"
-              href="#contato"
-              onClick={handleMobileMenuClose}
-              className="w-full justify-center"
-            >
-              Fale Conosco
-            </NavbarButton>
-            <NavbarButton
               variant="primary"
-              href="#agendar"
+              href="#cta"
               onClick={handleMobileMenuClose}
               className="w-full justify-center"
             >
-              Agendar Demo
+              Agendar conversa
             </NavbarButton>
           </div>
         </MobileNavMenu>

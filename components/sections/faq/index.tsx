@@ -99,12 +99,36 @@ function FAQItem({ question, answer, index, isOpen, onToggle, isInView }: FAQIte
 
 const FAQ_ITEMS = [
   {
-    question: "\"Isso é só consultoria?\"",
-    answer: "Não: é diagnóstico + execução + acompanhamento; e, quando existe oportunidade escalável, co-construção da solução.",
+    question: "\"Já fiz consultoria antes e não mudou nada.\"",
+    answer: "Consultoria tradicional entrega um PowerPoint bonito, propõe um monte de coisa pra você fazer e some. A Vert é diferente: a gente constrói. Desenvolvemos soluções reais com tecnologia, implementamos junto e só saímos quando está rodando de verdade.",
   },
   {
-    question: "\"Vai virar um monte de documento?\"",
-    answer: "Mapeamento existe para dar visão e destravar implementação, sem complicar.",
+    question: "\"Isso é só mais uma consultoria?\"",
+    answer: "Não. É diagnóstico + execução + acompanhamento; e, quando existe oportunidade escalável, co-construção da solução. A gente coloca a mão na massa.",
+  },
+  {
+    question: "\"Minha empresa é muito bagunçada, não tem jeito.\"",
+    answer: "Quanto mais caos, mais impacto a organização gera. Já vimos empresas saírem do improviso total para operações previsíveis em semanas. O primeiro passo é ter clareza — e isso a gente resolve rápido.",
+  },
+  {
+    question: "\"Vai virar um monte de documento que ninguém lê?\"",
+    answer: "Zero. Mapeamento existe para dar visão e destravar implementação, não para encher gaveta. Se não for prático, não fazemos.",
+  },
+  {
+    question: "\"Quanto tempo leva para ver resultados?\"",
+    answer: "Depende do contexto, mas geralmente em 2-4 semanas já existe clareza sobre os gargalos e um plano de ação rodando. Resultados concretos aparecem entre 1-3 meses.",
+  },
+  {
+    question: "\"Vocês desenvolvem software?\"",
+    answer: "Sim, quando faz sentido. Se identificamos uma dor recorrente com potencial, construímos soluções sob medida que podem virar produto escalável ou ferramenta interna.",
+  },
+  {
+    question: "\"Como funciona o modelo de parceria?\"",
+    answer: "Se você tem uma ideia ou identificou uma dor no mercado que pode virar produto, a gente desenvolve junto. Construímos a solução, você comercializa, e a Vert entra com participação no resultado. Nosso sucesso depende do seu — então estamos 100% comprometidos em fazer dar certo.",
+  },
+  {
+    question: "\"Por que a Vert se existem empresas maiores no mercado?\"",
+    answer: "Empresas grandes te tratam como mais um ticket. A Vert é um grupo enxuto que cresce junto com você — conhecemos seu negócio de verdade, temos pele em jogo e não descansamos até o resultado aparecer. Aqui você não é cliente, é parceiro.",
   },
 ] as const;
 

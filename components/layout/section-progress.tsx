@@ -11,6 +11,7 @@ const SECTIONS = [
   { id: "como-funciona", label: "Processo" },
   { id: "solucoes", label: "Método" },
   { id: "parceria", label: "Parceria" },
+  { id: "cases", label: "Cases" },
   { id: "resultados", label: "Resultados" },
   { id: "cta", label: "Contato" },
   { id: "faq", label: "FAQ" },

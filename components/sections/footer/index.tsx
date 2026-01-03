@@ -28,12 +28,14 @@ const FOOTER_LINKS = [
       { name: "O Problema", href: "#problema" },
       { name: "Solução", href: "#solucao" },
       { name: "Como Funciona", href: "#como-funciona" },
+      { name: "Método", href: "#solucoes" },
     ],
   },
   {
     title: "Mais",
     links: [
-      { name: "Método", href: "#solucoes" },
+      { name: "Parceria", href: "#parceria" },
+      { name: "Cases", href: "#cases" },
       { name: "Resultados", href: "#resultados" },
       { name: "FAQ", href: "#faq" },
     ],
