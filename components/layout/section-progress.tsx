@@ -32,7 +32,7 @@ export function SectionProgress() {
       // Mostra o indicador após scroll inicial
       setIsVisible(window.scrollY > 200);
 
-      // Encontra a seção ativa
+      // Encontra a seção ativaa
       const sections = SECTIONS.map(({ id }) => {
         const element = document.getElementById(id);
         if (!element) return { id, top: Infinity };
