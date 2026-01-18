@@ -101,7 +101,7 @@ function FAQItem({ question, answer, index, isOpen, onToggle, isInView }: FAQIte
 const FAQ_ITEMS = [
   {
     question: "\"Já fiz consultoria antes e não mudou nada.\"",
-    answer: "Consultoria tradicional entrega um PowerPoint bonito, propõe um monte de coisa pra você fazer e some. A Vert é diferente: a gente constrói junto. Entramos na sua operação, acompanhamos processos reais e só saímos quando está funcionando de verdade.",
+    answer: "Consultoria tradicional entrega um PowerPoint bonito, propõe um monte de coisa pra você fazer e some. A Vert é diferente: a gente constrói juntos. Entramos na sua operação, acompanhamos processos reais e só saímos quando está funcionando de verdade.",
   },
   {
     question: "\"Minha empresa é muito bagunçada, não tem jeito.\"",
@@ -113,7 +113,7 @@ const FAQ_ITEMS = [
   },
   {
     question: "Qual a diferença entre Atlas e Forge?",
-    answer: "O Atlas é para empresas que já funcionam mas crescem de forma desorganizada  entramos na operação e estruturamos de verdade. O Forge é para quando existe uma dor com potencial de virar produto  construímos junto, do zero ao mercado.",
+    answer: "O Atlas é para empresas que já funcionam mas crescem de forma desorganizada  entramos na operação e estruturamos de verdade. O Forge é para quando existe uma dor com potencial de virar produto  construímos juntos, do zero ao mercado.",
   },
   {
     question: "O que é a Mesa de Controle?",
@@ -125,7 +125,7 @@ const FAQ_ITEMS = [
   },
   {
     question: "Como funciona o modelo de parceria no Forge?",
-    answer: "Se construímos um produto junto, a Vert entra com participação no resultado. Não é só prestação de serviço  nosso sucesso depende do seu. Por isso estamos 100% comprometidos em fazer dar certo.",
+    answer: "Se construímos um produto juntos, a Vert entra com participação no resultado. Não é só prestação de serviço  nosso sucesso depende do seu. Por isso estamos 100% comprometidos em fazer dar certo.",
   },
   {
     question: "\"Quanto tempo leva para ver resultados?\"",

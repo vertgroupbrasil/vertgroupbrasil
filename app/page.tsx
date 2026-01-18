@@ -5,7 +5,7 @@ import { TriagemSection } from "@vert/components/sections/triagem";
 import { HorizontalsSection } from "@vert/components/sections/horizontals";
 import { HowItWorksSection } from "@vert/components/sections/how-it-works";
 import { ComplexityLevelsSection } from "@vert/components/sections/complexity-levels";
-import { PrinciplesSection } from "@vert/components/sections/principles";
+import PrinciplesSection from "@vert/components/sections/principles";
 import { ResultsSection } from "@vert/components/sections/results";
 // import { CaseStudiesSection } from "@vert/components/sections/case-studies"; // TODO: Habilitar depois
 import { PartnershipSection } from "@vert/components/sections/partnership";

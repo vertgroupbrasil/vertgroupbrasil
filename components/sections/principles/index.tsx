@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
-import { InfiniteMovingCards } from "@aceternity/infinite-moving-cards";
+import { Marquee } from "../../ui/magic/marquee";
 import { useEffect, useState } from "react";
 
 const PRINCIPLES = [
@@ -22,7 +22,7 @@ const PRINCIPLES = [
     title: "Princípio #3",
   },
   {
-    quote: "Software só existe quando sustenta a operação. Não vendemos tecnologia por vender  desenvolvemos quando resolve.",
+    quote: "Software só existe quando sustenta a operação. Não vendemos tecnologia por vender — desenvolvemos quando resolve.",
     name: "Tecnologia com propósito",
     title: "Princípio #4",
   },
@@ -32,13 +32,13 @@ const PRINCIPLES = [
     title: "Princípio #5",
   },
   {
-    quote: "Nosso sucesso depende do seu. Por isso construímos junto, com pele em jogo, até o resultado aparecer.",
+    quote: "Nosso sucesso depende do seu. Por isso construímos juntos, com pele em jogo, até o resultado aparecer.",
     name: "Parceria de verdade",
     title: "Princípio #6",
   },
 ];
 
-export function PrinciplesSection() {
+export default function PrinciplesSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [showAnimation, setShowAnimation] = useState(true);
@@ -51,52 +51,95 @@ export function PrinciplesSection() {
   }, []);
 
   return (
-    <section
-      ref={ref}
-      className="relative py-24 overflow-hidden"
-    >
-      <div className="mx-auto max-w-7xl px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-          animate={isInView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="text-center"
-        >
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
-            Princípios operacionais
-          </h2>
-          <p className="mt-4 text-xl text-muted-foreground">
-            As regras que guiam cada projeto da Vert
-          </p>
-        </motion.div>
-      </div>
+    <>
+      <style>{`
+        @keyframes marquee {
+          from { transform: translateX(0); }
+          to { transform: translateX(calc(-100% - var(--gap, 1rem))); }
+        }
+        
+        @keyframes marquee-vertical {
+          from { transform: translateY(0); }
+          to { transform: translateY(calc(-100% - var(--gap, 1rem))); }
+        }
+        
+        .animate-marquee {
+          animation: marquee 40s linear infinite;
+        }
+        
+        .animate-marquee-vertical {
+          animation: marquee-vertical 40s linear infinite;
+        }
+      `}</style>
 
-      <motion.div
-        initial={{ opacity: 0, filter: "blur(10px)" }}
-        animate={isInView ? { opacity: 1, filter: "blur(0px)" } : {}}
-        transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
-        className="mt-12"
+      <section
+        ref={ref}
+        className="relative py-24 overflow-hidden"
       >
-        {showAnimation ? (
-          <InfiniteMovingCards
-            items={PRINCIPLES}
-            direction="right"
-            speed="slow"
-            pauseOnHover={true}
-            className="py-4"
-          />
-        ) : (
-          <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-4">
-            {PRINCIPLES.map((item, idx) => (
-              <div key={idx} className="rounded-2xl border bg-card p-6">
-                <div className="text-lg font-semibold mb-2">{item.name}</div>
-                <div className="text-muted-foreground mb-2">{item.quote}</div>
-                <div className="text-xs text-muted-foreground">{item.title}</div>
-              </div>
-            ))}
-          </div>
-        )}
-      </motion.div>
-    </section>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+            animate={isInView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
+              O que faz a Vert diferente
+            </h2>
+            <p className="mt-4 text-xl text-muted-foreground">
+              Nossos compromissos em cada projeto
+            </p>
+          </motion.div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, filter: "blur(10px)" }}
+          animate={isInView ? { opacity: 1, filter: "blur(0px)" } : {}}
+          transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
+          className="mt-12"
+        >
+          {showAnimation ? (
+            <Marquee 
+              className="py-4" 
+              pauseOnHover
+              repeat={2}
+            >
+              {PRINCIPLES.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="mx-4 rounded-2xl border bg-card p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 min-w-[400px] max-w-[400px]"
+                >
+                  <div className="text-sm font-semibold text-primary/60 mb-2">
+                    {item.title}
+                  </div>
+                  <div className="text-lg font-bold mb-3 text-foreground">
+                    {item.name}
+                  </div>
+                  <div className="text-sm text-muted-foreground leading-relaxed">
+                    {item.quote}
+                  </div>
+                </div>
+              ))}
+            </Marquee>
+          ) : (
+            <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+              {PRINCIPLES.map((item, idx) => (
+                <div key={idx} className="rounded-2xl border bg-card p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+                  <div className="text-sm font-semibold text-primary/60 mb-2">
+                    {item.title}
+                  </div>
+                  <div className="text-lg font-bold mb-3">
+                    {item.name}
+                  </div>
+                  <div className="text-sm text-muted-foreground leading-relaxed">
+                    {item.quote}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </motion.div>
+      </section>
+    </>
   );
 }

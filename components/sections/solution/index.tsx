@@ -30,7 +30,7 @@ const SOLUTIONS = [
     features: [
       "Diagnóstico do sistema real",
       "Processos claros e documentados",
-      "Decisões que saem da cabeça para o papel",
+      "Ideias que saem da cabeça para o papel",
       "Software que sustenta a operação",
     ],
     gradient: "from-emerald-500 to-teal-600",
@@ -39,7 +39,7 @@ const SOLUTIONS = [
     icon: IconHammer,
     name: "Forge",
     title: "Construção e Co-criação de Produtos",
-    description: "Quando uma dor recorrente tem potencial de virar produto. Construímos junto, do zero ao mercado  com pele em jogo.",
+    description: "Quando uma dor recorrente tem potencial de virar produto. Construímos juntos, do zero ao mercado  com pele em jogo.",
     features: [
       "Da ideia à validação",
       "Estratégia e posicionamento",
@@ -100,7 +100,7 @@ export function SolutionSection() {
                 iterations={1}
                 isView={true}
               >
-                trabalhar junto
+                trabalhar juntos
               </Highlighter>
             </h2>
           </motion.div>
