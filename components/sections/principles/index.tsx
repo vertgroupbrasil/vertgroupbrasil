@@ -23,7 +23,7 @@ const PRINCIPLES = [
     title: "Princípio #3",
   },
   {
-    quote: "Software só existe quando sustenta a operação. Não vendemos tecnologia por vender — desenvolvemos quando resolve.",
+    quote: "Software só existe quando sustenta a operação. Não vendemos tecnologia por vender  desenvolvemos quando resolve.",
     name: "Tecnologia com propósito",
     title: "Princípio #4",
   },
