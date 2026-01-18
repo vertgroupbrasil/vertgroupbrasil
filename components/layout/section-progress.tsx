@@ -7,9 +7,12 @@ import { cn } from "@vert/lib/utils";
 const SECTIONS = [
   { id: "hero", label: "Início" },
   { id: "problema", label: "Problema" },
-  { id: "solucao", label: "Solução" },
+  { id: "triagem", label: "Triagem" },
+  { id: "solucao", label: "Serviços" },
+  { id: "horizontais", label: "Horizontais" },
   { id: "como-funciona", label: "Processo" },
-  { id: "solucoes", label: "Método" },
+  { id: "complexidade", label: "Complexidade" },
+  { id: "principios", label: "Princípios" },
   { id: "parceria", label: "Parceria" },
   // { id: "cases", label: "Cases" }, // TODO: Habilitar depois
   { id: "resultados", label: "Resultados" },
@@ -29,21 +32,20 @@ export function SectionProgress() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Mostra o indicador após scroll inicial
       setIsVisible(window.scrollY > 200);
 
-      // Encontra a seção ativaa
-      const sections = SECTIONS.map(({ id }) => {
-        const element = document.getElementById(id);
-        if (!element) return { id, top: Infinity };
-        const rect = element.getBoundingClientRect();
-        return { id, top: Math.abs(rect.top - 150) };
-      });
-
-      const closest = sections.reduce((prev, curr) =>
-        prev.top < curr.top ? prev : curr
-      );
-      setActiveSection(closest.id);
+      // Nova lógica: pega a última seção cujo topo já passou pelo topo da viewport (com offset)
+      const OFFSET = 160; // ajuste para sticky headers etc
+      let current = SECTIONS[0].id;
+      for (const { id } of SECTIONS) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const rect = el.getBoundingClientRect();
+        if (rect.top - OFFSET <= 0) {
+          current = id;
+        }
+      }
+      setActiveSection(current);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });

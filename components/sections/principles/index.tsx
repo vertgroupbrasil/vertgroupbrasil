@@ -3,36 +3,37 @@
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
 import { InfiniteMovingCards } from "@aceternity/infinite-moving-cards";
+import { useEffect, useState } from "react";
 
 const PRINCIPLES = [
   {
-    quote: "Simplicidade é a sofisticação suprema. Processos complexos demais não funcionam no mundo real.",
-    name: "Clareza",
+    quote: "Nenhum projeto começa sem triagem. Entendemos o sistema antes de propor qualquer coisa.",
+    name: "Triagem primeiro",
     title: "Princípio #1",
   },
   {
-    quote: "Tecnologia é meio, não fim. Só aplicamos quando realmente resolve um problema.",
-    name: "Pragmatismo",
+    quote: "Entramos na operação de verdade. Sentamos com líderes, acompanhamos processos reais, entendemos como funciona no dia a dia.",
+    name: "Presença real",
     title: "Princípio #2",
   },
   {
-    quote: "Resultados vêm de execução consistente. Planejamento sem ação é só PowerPoint.",
-    name: "Execução",
+    quote: "Todo mês, na Mesa de Controle, você vê exatamente o que foi feito. Nada é escondido, nada é empurrado.",
+    name: "Transparência total",
     title: "Princípio #3",
   },
   {
-    quote: "Crescimento sustentável nasce de processos sólidos, não de atalhos.",
-    name: "Fundação",
+    quote: "Software só existe quando sustenta a operação. Não vendemos tecnologia por vender  desenvolvemos quando resolve.",
+    name: "Tecnologia com propósito",
     title: "Princípio #4",
   },
   {
-    quote: "Parceria real significa estar junto nas trincheiras, não só nas reuniões.",
-    name: "Compromisso",
+    quote: "Não existe pacote fechado. Cada empresa é única, e propomos exatamente o que faz sentido pro seu contexto.",
+    name: "Sob medida",
     title: "Princípio #5",
   },
   {
-    quote: "Cada empresa é única. Copiamos frameworks, mas adaptamos para sua realidade.",
-    name: "Personalização",
+    quote: "Nosso sucesso depende do seu. Por isso construímos junto, com pele em jogo, até o resultado aparecer.",
+    name: "Parceria de verdade",
     title: "Princípio #6",
   },
 ];
@@ -40,6 +41,14 @@ const PRINCIPLES = [
 export function PrinciplesSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [showAnimation, setShowAnimation] = useState(true);
+
+  // Detect mobile and reduced motion
+  useEffect(() => {
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    const prefersReducedMotion = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    setShowAnimation(!isMobile && !prefersReducedMotion);
+  }, []);
 
   return (
     <section
@@ -54,10 +63,10 @@ export function PrinciplesSection() {
           className="text-center"
         >
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
-            No que acreditamos
+            Princípios operacionais
           </h2>
           <p className="mt-4 text-xl text-muted-foreground">
-            Princípios que guiam nosso trabalho
+            As regras que guiam cada projeto da Vert
           </p>
         </motion.div>
       </div>
@@ -68,13 +77,25 @@ export function PrinciplesSection() {
         transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
         className="mt-12"
       >
-        <InfiniteMovingCards
-          items={PRINCIPLES}
-          direction="right"
-          speed="slow"
-          pauseOnHover={true}
-          className="py-4"
-        />
+        {showAnimation ? (
+          <InfiniteMovingCards
+            items={PRINCIPLES}
+            direction="right"
+            speed="slow"
+            pauseOnHover={true}
+            className="py-4"
+          />
+        ) : (
+          <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-4">
+            {PRINCIPLES.map((item, idx) => (
+              <div key={idx} className="rounded-2xl border bg-card p-6">
+                <div className="text-lg font-semibold mb-2">{item.name}</div>
+                <div className="text-muted-foreground mb-2">{item.quote}</div>
+                <div className="text-xs text-muted-foreground">{item.title}</div>
+              </div>
+            ))}
+          </div>
+        )}
       </motion.div>
     </section>
   );

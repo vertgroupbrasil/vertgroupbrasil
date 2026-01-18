@@ -7,11 +7,16 @@ import { HeroFloatingIcons } from "./hero-floating-icons";
 import { HeroScrollIndicator } from "./hero-scroll-indicator";
 
 const HERO_CONTENT = {
-  titleParts: ["guiar processos.", "construir negócios."],
-  highlight: "juntos.",
+  titleParts: [
+    "Sua empresa cresce, mas você não descansa.",
+    "Tudo depende de você. Sempre você.",
+    "Processos mudam toda semana.",
+    "Você não confia nos números que recebe.",
+  ],
+  highlight: "A gente resolve isso.",
   description:
-    "Organizamos operações, revelamos gargalos e ajudamos empresas a crescer com método e tecnologia.",
-  primaryAction: "Agendar conversa",
+    "Organizamos operações de verdade. Sem promessas vazias, sem PowerPoint bonito que vira gaveta. Entramos na sua empresa, entendemos o sistema e construímos junto.",
+  primaryAction: "Quero organizar minha operação",
 } as const;
 
 export function HeroSection() {

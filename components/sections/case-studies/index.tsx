@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "motion/react";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import {
   IconQuote,
@@ -32,7 +32,7 @@ const CASE_STUDIES = [
     // Descrição curta do case
     headline: "Do caos operacional à sintropia",
     description:
-      "Para entender de verdade a operação da Salgados Familiares, a gente foi pra cozinha. Literalmente. Colocamos a mão na massa — fizemos bolinho de carne, acompanhamos pedidos, sentimos na pele os gargalos. Só assim conseguimos redesenhar os processos e construir um sistema de gestão que faz sentido pro dia a dia deles. Hoje, produção e vendas conversam em tempo real, e a equipe finalmente tem clareza pra focar no que importa: crescer.",
+      "Para entender de verdade a operação da Salgados Familiares, a gente foi pra cozinha. Literalmente. Colocamos a mão na massa  fizemos bolinho de carne, acompanhamos pedidos, sentimos na pele os gargalos. Só assim conseguimos redesenhar os processos e construir um sistema de gestão que faz sentido pro dia a dia deles. Hoje, produção e vendas conversam em tempo real, e a equipe finalmente tem clareza pra focar no que importa: crescer.",
     
     // Métricas de resultado (adicione ou remova conforme necessário)
     metrics: [
@@ -45,7 +45,7 @@ const CASE_STUDIES = [
     // Depoimento do cliente
     testimonial: {
       quote:
-        "A Vert não ficou só na teoria. Eles vieram pra cá, entenderam nossa rotina, sentiram nossas dificuldades. O sistema que construíram é exatamente o que a gente precisava — simples, prático e feito pra nossa realidade.",
+        "A Vert não ficou só na teoria. Eles vieram pra cá, entenderam nossa rotina, sentiram nossas dificuldades. O sistema que construíram é exatamente o que a gente precisava  simples, prático e feito pra nossa realidade.",
       author: "João Silva",
       role: "CEO, Empresa Exemplo",
       avatar: "/cases/exemplo/avatar.jpg", // Troque pelo avatar real
@@ -356,6 +356,13 @@ export function CaseStudiesSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [activeCase, setActiveCase] = useState(0);
+  const [showHeavy, setShowHeavy] = useState(true);
+
+  useEffect(() => {
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    const prefersReducedMotion = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    setShowHeavy(!isMobile && !prefersReducedMotion);
+  }, []);
 
   const nextCase = () => {
     setActiveCase((prev) => (prev + 1) % CASE_STUDIES.length);
@@ -371,8 +378,10 @@ export function CaseStudiesSection() {
       id="cases"
       className="relative py-24 px-4 overflow-hidden"
     >
-      {/* Background decorativo */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none" />
+      {/* Background decorativo (desktop only, no reduced motion) */}
+      {showHeavy && (
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none" />
+      )}
 
       <div className="mx-auto max-w-6xl relative">
         {/* Header da seção */}
@@ -411,15 +420,19 @@ export function CaseStudiesSection() {
 
         {/* Carrossel de cases */}
         <div className="relative overflow-hidden">
-          <motion.div
-            key={activeCase}
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -50 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-          >
+          {showHeavy ? (
+            <motion.div
+              key={activeCase}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -50 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+            >
+              <CaseCard caseStudy={CASE_STUDIES[activeCase]} index={0} />
+            </motion.div>
+          ) : (
             <CaseCard caseStudy={CASE_STUDIES[activeCase]} index={0} />
-          </motion.div>
+          )}
         </div>
 
         {/* Navegação entre cases (só aparece se tiver mais de 1) */}

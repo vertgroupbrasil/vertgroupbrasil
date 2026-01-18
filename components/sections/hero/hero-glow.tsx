@@ -1,11 +1,28 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useEffect, useState } from "react";
 
 /**
  * HeroGlow - Efeito de glow animado atrás do conteúdo principal
+ * Otimizado: Em mobile usa CSS puro ao invés de animação
  */
 export function HeroGlow() {
+  const [isMobile, setIsMobile] = useState(true);
+  
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
+
+  // Mobile: CSS simples sem animações
+  if (isMobile) {
+    return (
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+        <div className="absolute h-[400px] w-[400px] rounded-full bg-primary/20 blur-[100px]" />
+      </div>
+    );
+  }
+
   return (
     <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
       {/* Glow principal verde */}

@@ -18,19 +18,19 @@ import { Highlighter } from "@vert/components/ui/magic/highlighter";
 const PROBLEMS = [
   {
     icon: IconAlertTriangle,
-    text: "Processos estão soltos",
+    text: "Processos soltos",
   },
   {
     icon: IconMoodConfuzed,
-    text: "Decisões são feitas no improviso",
+    text: "Números não confiáveis",
   },
   {
     icon: IconRepeat,
-    text: "Retrabalho e erros se repetem",
+    text: "Retrabalho constante",
   },
   {
     icon: IconEyeOff,
-    text: "Oportunidades passam despercebidas",
+    text: "Decisões na cabeça de alguém",
   },
 ];
 
@@ -152,7 +152,7 @@ export function ProblemSection() {
           className="text-center"
         >
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
-            Seu negócio pode crescer{" "}
+            Você conhece{" "}
             <Highlighter
               action="underline"
               color="#ef4444"
@@ -161,11 +161,11 @@ export function ProblemSection() {
               iterations={1}
               isView={true}
             >
-              ainda mais
+              essa sensação
             </Highlighter>
           </h2>
           <p className="mt-4 text-xl text-muted-foreground">
-            — mas hoje:
+            A empresa funciona, fatura, cresce. Mas cresce de forma desorganizada.
           </p>
         </motion.div>
 
@@ -206,10 +206,8 @@ export function ProblemSection() {
             pointerClassName="text-destructive"
           >
             <p className="text-center text-lg text-muted-foreground px-4 py-2">
-              Isso custa{" "}
-              <span className="font-semibold text-destructive">tempo</span>,{" "}
-              <span className="font-semibold text-destructive">dinheiro</span> e{" "}
-              <span className="font-semibold text-destructive">energia</span>.
+              O problema não é falta de esforço. É falta de{" "}
+              <span className="font-semibold text-destructive">estrutura</span>.
             </p>
           </PointerHighlight>
         </motion.div>

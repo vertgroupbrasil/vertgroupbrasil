@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import { IconPlus, IconMinus, IconQuestionMark } from "@tabler/icons-react";
 import { cn } from "@vert/lib/utils";
 import { SparklesCore } from "@aceternity/sparkles";
+import { useEffect } from "react";
 
 interface FAQItemProps {
   question: string;
@@ -100,42 +101,59 @@ function FAQItem({ question, answer, index, isOpen, onToggle, isInView }: FAQIte
 const FAQ_ITEMS = [
   {
     question: "\"Já fiz consultoria antes e não mudou nada.\"",
-    answer: "Consultoria tradicional entrega um PowerPoint bonito, propõe um monte de coisa pra você fazer e some. A Vert é diferente: a gente constrói. Desenvolvemos soluções reais com tecnologia, implementamos junto e só saímos quando está rodando de verdade.",
-  },
-  {
-    question: "\"Isso é só mais uma consultoria?\"",
-    answer: "Não. É diagnóstico + execução + acompanhamento; e, quando existe oportunidade escalável, co-construção da solução. A gente coloca a mão na massa.",
+    answer: "Consultoria tradicional entrega um PowerPoint bonito, propõe um monte de coisa pra você fazer e some. A Vert é diferente: a gente constrói junto. Entramos na sua operação, acompanhamos processos reais e só saímos quando está funcionando de verdade.",
   },
   {
     question: "\"Minha empresa é muito bagunçada, não tem jeito.\"",
-    answer: "Quanto mais caos, mais impacto a organização gera. Já vimos empresas saírem do improviso total para operações previsíveis em semanas. O primeiro passo é ter clareza — e isso a gente resolve rápido.",
+    answer: "Quanto mais caos, mais impacto a organização gera. Já vimos empresas saírem do improviso total para operações previsíveis em semanas. O primeiro passo é ter clareza  e isso a gente resolve rápido.",
   },
   {
-    question: "\"Vai virar um monte de documento que ninguém lê?\"",
-    answer: "Zero. Mapeamento existe para dar visão e destravar implementação, não para encher gaveta. Se não for prático, não fazemos.",
+    question: "O que é a triagem?",
+    answer: "Uma conversa estruturada para entender como sua empresa funciona de verdade. Não é diagnóstico profundo, é classificação. Ao final, sabemos exatamente o que faz sentido propor  sem promessa vazia, sem pacote fechado.",
+  },
+  {
+    question: "Qual a diferença entre Atlas e Forge?",
+    answer: "O Atlas é para empresas que já funcionam mas crescem de forma desorganizada  entramos na operação e estruturamos de verdade. O Forge é para quando existe uma dor com potencial de virar produto  construímos junto, do zero ao mercado.",
+  },
+  {
+    question: "O que é a Mesa de Controle?",
+    answer: "Todo mês sentamos juntos. Mostramos o que foi feito, as decisões tomadas, onde avançamos e onde travamos. Se algo não fez sentido, discutimos ali. É o momento de transparência total  nada é escondido, nada é empurrado.",
+  },
+  {
+    question: "Vocês desenvolvem software?",
+    answer: "Sim, quando faz sentido. Não vendemos software isoladamente  desenvolvemos quando ele sustenta a operação que estamos estruturando. Software não é produto por si só, é infraestrutura que faz o resto funcionar.",
+  },
+  {
+    question: "Como funciona o modelo de parceria no Forge?",
+    answer: "Se construímos um produto junto, a Vert entra com participação no resultado. Não é só prestação de serviço  nosso sucesso depende do seu. Por isso estamos 100% comprometidos em fazer dar certo.",
   },
   {
     question: "\"Quanto tempo leva para ver resultados?\"",
-    answer: "Depende do contexto, mas geralmente em 2-4 semanas já existe clareza sobre os gargalos e um plano de ação rodando. Resultados concretos aparecem entre 1-3 meses.",
+    answer: "Depende do contexto, mas geralmente em 2-4 semanas já existe clareza sobre os gargalos e um plano de ação rodando. Resultados estruturais aparecem entre 2-6 meses, dependendo da complexidade.",
   },
   {
-    question: "\"Vocês desenvolvem software?\"",
-    answer: "Sim, quando faz sentido. Se identificamos uma dor recorrente com potencial, construímos soluções sob medida que podem virar produto escalável ou ferramenta interna.",
+    question: "\"Por que a Vert e não uma empresa maior?\"",
+    answer: "Empresas grandes te tratam como mais um ticket. A Vert é um grupo enxuto que cresce junto com você  conhecemos seu negócio de verdade, temos pele em jogo e não descansamos até o resultado aparecer.",
   },
   {
-    question: "\"Como funciona o modelo de parceria?\"",
-    answer: "Se você tem uma ideia ou identificou uma dor no mercado que pode virar produto, a gente desenvolve junto. Construímos a solução, você comercializa, e a Vert entra com participação no resultado. Nosso sucesso depende do seu — então estamos 100% comprometidos em fazer dar certo.",
-  },
-  {
-    question: "\"Por que a Vert se existem empresas maiores no mercado?\"",
-    answer: "Empresas grandes te tratam como mais um ticket. A Vert é um grupo enxuto que cresce junto com você — conhecemos seu negócio de verdade, temos pele em jogo e não descansamos até o resultado aparecer. Aqui você não é cliente, é parceiro.",
+    question: "\"E se eu precisar de ajustes depois?\"",
+    answer: "Se for correção de algo que construímos, resolvemos. Se for evolução  funcionalidades novas, mudanças de escopo  discutimos juntos na Mesa de Controle e ajustamos o trabalho. Tudo é claro desde o começo.",
   },
 ] as const;
+
 
 export function FAQSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [showParticles, setShowParticles] = useState(true);
+
+  // Detect mobile and reduced motion
+  useEffect(() => {
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    const prefersReducedMotion = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    setShowParticles(!isMobile && !prefersReducedMotion);
+  }, []);
 
   const handleToggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -147,17 +165,19 @@ export function FAQSection() {
       id="faq"
       className="relative py-24 px-4 overflow-hidden"
     >
-      {/* Sparkles background */}
+      {/* Sparkles background (desktop only, no reduced motion) */}
       <div className="absolute inset-0 -z-10">
-        <SparklesCore
-          id="faq-sparkles"
-          background="transparent"
-          minSize={0.4}
-          maxSize={1}
-          particleDensity={30}
-          particleColor="#10b981"
-          className="h-full w-full"
-        />
+        {showParticles && (
+          <SparklesCore
+            id="faq-sparkles"
+            background="transparent"
+            minSize={0.4}
+            maxSize={1}
+            particleDensity={30}
+            particleColor="#10b981"
+            className="h-full w-full"
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background" />
       </div>
 

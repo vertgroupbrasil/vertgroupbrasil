@@ -27,8 +27,11 @@ export function CTASection() {
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
-            Quer clareza sobre o seu negócio?
+            Cansou de crescer no improviso?
           </h2>
+          <p className="mt-4 text-xl text-muted-foreground">
+            Vamos conversar. Sem compromisso, sem proposta na primeira conversa.
+          </p>
         </motion.div>
 
         <motion.div
@@ -47,7 +50,7 @@ export function CTASection() {
               className="cursor-pointer group/btn flex items-center gap-3 bg-primary px-10 py-4 text-lg font-semibold text-primary-foreground"
               duration={0.8}
             >
-              Agendar conversa gratuita
+              Quero organizar minha operação
               <ArrowRight className="size-5 transition-transform duration-300 group-hover/btn:translate-x-1" />
             </HoverBorderGradient>
           </a>
@@ -59,7 +62,7 @@ export function CTASection() {
           transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
           className="mt-6 text-muted-foreground"
         >
-          15 minutos — entendemos o contexto e mostramos caminhos
+          15 minutos  entendemos o contexto e mostramos caminhos possíveis
         </motion.p>
       </div>
     </section>

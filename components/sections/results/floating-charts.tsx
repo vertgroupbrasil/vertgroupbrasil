@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
+import { useEffect, useState } from "react";
 import { LabelList, Pie, PieChart, Bar, BarChart, Line, LineChart, XAxis } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle } from "@shadcn/card";
 import { ChartConfig, ChartContainer } from "@shadcn/chart";
@@ -129,6 +130,18 @@ function MiniBarChart() {
 }
 
 export function FloatingCharts() {
+  const prefersReducedMotion = useReducedMotion();
+  const [shouldShow, setShouldShow] = useState(false);
+  
+  useEffect(() => {
+    // Só mostrar em telas grandes e sem preferência de motion reduzido
+    const isLargeScreen = window.innerWidth >= 1024;
+    setShouldShow(isLargeScreen && !prefersReducedMotion);
+  }, [prefersReducedMotion]);
+  
+  // Não renderizar nada em mobile/tablet
+  if (!shouldShow) return null;
+  
   return (
     <>
       {/* Chart esquerda superior */}

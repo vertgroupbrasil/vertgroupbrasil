@@ -14,11 +14,11 @@ export function HeroTitle({ titleParts, highlight }: HeroTitleProps) {
       initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       transition={{ duration: 0.7, ease: "easeOut" }}
-      className="max-w-4xl text-center text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl"
+      className="max-w-5xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-6xl"
     >
       <FlipWords 
         words={[...titleParts]} 
-        duration={2500}
+        duration={3000}
         className="text-foreground"
       />
       <br />

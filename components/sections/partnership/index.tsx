@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "motion/react";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import {
   IconBulb,
   IconRocket,
@@ -16,26 +16,27 @@ import { AuroraText } from "@vert/components/ui/magic/aurora-text";
 import { Highlighter } from "@vert/components/ui/magic/highlighter";
 
 const LEFT_CARD = {
-  title: "Boas ideias não deveriam morrer dentro das empresas.",
-  subtitle: "Quando estruturadas, dores específicas podem se transformar em:",
+  title: "Às vezes, durante o Atlas, surge algo maior.",
+  subtitle: "Um software interno que resolve uma dor comum no setor. Uma solução que não depende de customização extrema. Potencial real de produto.",
   items: [
-    "Produtos escaláveis",
-    "Soluções reutilizáveis",
-    "Novas linhas de receita",
+    "Produto escalável",
+    "Solução reutilizável",
+    "Nova linha de receita",
   ],
 };
 
 const RIGHT_CARD = {
-  title: "Com quem trabalhamos",
-  subtitle: "Empreendedores e investidores que valorizam:",
+  title: "Quando isso acontece, propomos o Forge.",
+  subtitle: "Transformamos o que nasceu na operação em produto de mercado  com validação, posicionamento e desenvolvimento.",
   items: [
-    "Decisões responsáveis",
-    "Uso inteligente de tempo e capital",
-    "Inovação com propósito — não por impulso",
+    "Co-criação de verdade",
+    "Pele em jogo dos dois lados",
+    "Sucesso compartilhado",
   ],
 };
 
-function OrbitingBackground() {
+function OrbitingBackground({ show }: { show: boolean }) {
+  if (!show) return null;
   return (
     <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none opacity-30">
       <OrbitingCircles
@@ -80,6 +81,14 @@ function OrbitingBackground() {
 export function PartnershipSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [showHeavy, setShowHeavy] = useState(true);
+
+  // Detect mobile and reduced motion
+  useEffect(() => {
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    const prefersReducedMotion = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    setShowHeavy(!isMobile && !prefersReducedMotion);
+  }, []);
 
   return (
     <section
@@ -92,8 +101,8 @@ export function PartnershipSection() {
         <div className="h-[600px] w-[900px] rounded-full bg-primary/5 blur-[150px]" />
       </div>
 
-      {/* Orbiting circles background */}
-      <OrbitingBackground />
+      {/* Orbiting circles background (desktop only, no reduced motion) */}
+      <OrbitingBackground show={showHeavy} />
 
       <div className="relative mx-auto max-w-6xl">
         {/* Título */}
@@ -104,7 +113,7 @@ export function PartnershipSection() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
-            <AuroraText colors={["#10b981", "#14b8a6", "#059669", "#34d399"]} speed={1.5}>
+            <AuroraText colors={["#10b981", "#14b8a6", "#059669", "#34d399"]} speed={showHeavy ? 1.5 : 0}>
               Crescemos
             </AuroraText>{" "}
             quando{" "}
@@ -112,17 +121,17 @@ export function PartnershipSection() {
               action="circle"
               color="#10b981"
               strokeWidth={3}
-              animationDuration={1000}
-              iterations={2}
+              animationDuration={showHeavy ? 1000 : 0}
+              iterations={showHeavy ? 2 : 0}
               padding={11}
-              isView={true}
+              isView={showHeavy}
             >
               você
             </Highlighter>{" "}
             cresce.
           </h2>
           <p className="mt-4 text-xl text-muted-foreground">
-            Por isso, trabalhamos em parceria — não como fornecedores.
+            Por isso, trabalhamos em parceria  não como fornecedores.
           </p>
         </motion.div>
 
@@ -136,11 +145,11 @@ export function PartnershipSection() {
           >
             <MagicCard
               className="h-full rounded-2xl"
-              gradientSize={300}
-              gradientColor="rgba(16, 185, 129, 0.15)"
-              gradientFrom="#10b981"
-              gradientTo="#059669"
-              gradientOpacity={0.1}
+              gradientSize={showHeavy ? 300 : 0}
+              gradientColor={showHeavy ? "rgba(16, 185, 129, 0.15)" : "transparent"}
+              gradientFrom={showHeavy ? "#10b981" : "transparent"}
+              gradientTo={showHeavy ? "#059669" : "transparent"}
+              gradientOpacity={showHeavy ? 0.1 : 0}
             >
               <div className="relative h-full p-8">
                 {/* Ícone decorativo */}
@@ -184,11 +193,11 @@ export function PartnershipSection() {
           >
             <MagicCard
               className="h-full rounded-2xl"
-              gradientSize={300}
-              gradientColor="rgba(16, 185, 129, 0.15)"
-              gradientFrom="#059669"
-              gradientTo="#10b981"
-              gradientOpacity={0.1}
+              gradientSize={showHeavy ? 300 : 0}
+              gradientColor={showHeavy ? "rgba(16, 185, 129, 0.15)" : "transparent"}
+              gradientFrom={showHeavy ? "#059669" : "transparent"}
+              gradientTo={showHeavy ? "#10b981" : "transparent"}
+              gradientOpacity={showHeavy ? 0.1 : 0}
             >
               <div className="relative h-full p-8">
                 {/* Ícone decorativo */}

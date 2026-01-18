@@ -1,6 +1,26 @@
 "use client";
-import React, { useMemo, useRef, useState } from "react";
+import React, { useMemo, useRef, useState, useEffect } from "react";
 import { cn } from "@vert/lib/utils";
+
+// Hook para detectar mobile e prefer-reduced-motion
+function useReducedAnimations() {
+  const [shouldReduce, setShouldReduce] = useState(true); // Default true para SSR
+  
+  useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    setShouldReduce(isMobile || prefersReduced);
+    
+    const handleResize = () => {
+      setShouldReduce(window.innerWidth < 768 || prefersReduced);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
+  return shouldReduce;
+}
 
 export const BackgroundRippleEffect = ({
   rows = 8,
@@ -11,12 +31,18 @@ export const BackgroundRippleEffect = ({
   cols?: number;
   cellSize?: number;
 }) => {
+  const shouldReduce = useReducedAnimations();
   const [clickedCell, setClickedCell] = useState<{
     row: number;
     col: number;
   } | null>(null);
   const [rippleKey, setRippleKey] = useState(0);
   const ref = useRef<any>(null);
+
+  // Em mobile, usar grid muito menor ou nenhum
+  const actualRows = shouldReduce ? 4 : rows;
+  const actualCols = shouldReduce ? 12 : cols;
+  const actualCellSize = shouldReduce ? 64 : cellSize;
 
   return (
     <div
@@ -32,9 +58,9 @@ export const BackgroundRippleEffect = ({
         <DivGrid
           key={`base-${rippleKey}`}
           className="mask-radial-from-20% mask-radial-at-top opacity-600"
-          rows={rows}
-          cols={cols}
-          cellSize={cellSize}
+          rows={actualRows}
+          cols={actualCols}
+          cellSize={actualCellSize}
           borderColor="var(--cell-border-color)"
           fillColor="var(--cell-fill-color)"
           clickedCell={clickedCell}
@@ -42,7 +68,7 @@ export const BackgroundRippleEffect = ({
             setClickedCell({ row, col });
             setRippleKey((k) => k + 1);
           }}
-          interactive={true}
+          interactive={!shouldReduce}
         />
       </div>
     </div>
