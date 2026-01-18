@@ -3,6 +3,7 @@
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
 import { Marquee } from "../../ui/magic/marquee";
+import { Highlighter } from "@vert/components/ui/magic/highlighter";
 import { useEffect, useState } from "react";
 
 const PRINCIPLES = [
@@ -73,6 +74,7 @@ export default function PrinciplesSection() {
       `}</style>
 
       <section
+      id="principios"
         ref={ref}
         className="relative py-24 overflow-hidden"
       >
@@ -84,11 +86,11 @@ export default function PrinciplesSection() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
-              O que faz a Vert diferente
+              O que faz a Vert{' '}
+              <Highlighter action="box" color="var(--primary)" strokeWidth={2} animationDuration={900} iterations={2} padding={4} isView={true}>
+                diferente
+              </Highlighter>
             </h2>
-            <p className="mt-4 text-xl text-muted-foreground">
-              Nossos compromissos em cada projeto
-            </p>
           </motion.div>
         </div>
 

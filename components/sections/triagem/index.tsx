@@ -29,7 +29,7 @@ export function TriagemSection() {
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6"
           >
             <IconSparkles className="h-4 w-4" />
-            Triagem gratuita, presencial e sem compromisso
+            Triagem gratuita, presencial e personalizada.
           </motion.div>
           <motion.h2
             initial={showAnim ? { opacity: 0, y: 30, filter: "blur(10px)" } : {}}
@@ -41,7 +41,7 @@ export function TriagemSection() {
             <span className="inline-block mt-2">
               <Highlighter
                 action="highlight"
-                color="#10b981"
+                color="var(--primary)"
                 strokeWidth={2}
                 animationDuration={900}
                 iterations={2}

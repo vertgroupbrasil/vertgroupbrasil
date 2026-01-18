@@ -66,7 +66,7 @@ export function SolutionSection() {
   return (
     <section
       ref={ref}
-      id="servicos"
+      id="solucao"
       className="relative py-24 px-4"
     >
       {/* Background gradient sutil */}

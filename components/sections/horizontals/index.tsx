@@ -173,43 +173,43 @@ export function HorizontalsSection() {
                   key={horizontal.id}
                   onClick={() => setActiveIndex(index)}
                   className={cn(
-                    "group flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-all duration-300",
-                    isActive 
-                      ? "bg-primary text-primary-foreground" 
+                    "group flex items-center gap-3 px-4 py-3 cursor-pointer rounded-xl text-left transition-all duration-300",
+                    isActive
+                      ? "bg-secondary"
                       : "hover:bg-muted/80"
                   )}
                 >
                   <div className={cn(
                     "flex h-9 w-9 shrink-0 items-center justify-center rounded-lg transition-colors",
-                    isActive 
-                      ? "bg-white/20" 
+                    isActive
+                      ? "bg-white/20"
                       : cn(hColors.bg, hColors.border, "border")
                   )}>
                     <Icon className={cn(
                       "h-5 w-5",
-                      isActive ? "text-white" : hColors.text
+                      isActive ? "text-foreground dark:text-white" : hColors.text
                     )} />
                   </div>
                   
                   <div className="flex-1 min-w-0">
                     <span className={cn(
                       "font-semibold text-sm block",
-                      isActive ? "text-white" : "text-foreground"
+                      isActive ? "text-foreground dark:text-white" : "text-foreground"
                     )}>
                       {horizontal.name}
                     </span>
                     <span className={cn(
                       "text-xs block truncate",
-                      isActive ? "text-white/70" : "text-muted-foreground"
+                      isActive ? "text-muted-foreground dark:text-white/70" : "text-muted-foreground"
                     )}>
                       {horizontal.tagline}
                     </span>
                   </div>
 
-                  <IconChevronRight className={cn(
+                    <IconChevronRight className={cn(
                     "h-4 w-4 shrink-0 transition-all",
-                    isActive 
-                      ? "opacity-100 text-white" 
+                    isActive
+                      ? "opacity-100 text-foreground dark:text-white"
                       : "opacity-0 group-hover:opacity-50"
                   )} />
                 </button>
@@ -225,7 +225,7 @@ export function HorizontalsSection() {
             className="flex-1 min-w-0"
           >
             <MagicCard
-              className="rounded-2xl h-full"
+              className={cn("rounded-2xl h-full border", colors.border)}
               gradientSize={400}
               gradientColor={colors.glow}
               gradientFrom={colors.text.replace("text-", "#").replace("-500", "")}

@@ -119,7 +119,7 @@ export function PartnershipSection() {
             quando{" "}
             <Highlighter  
               action="circle"
-              color="#10b981"
+              color="var(--primary)"
               strokeWidth={3}
               animationDuration={showHeavy ? 1000 : 0}
               iterations={showHeavy ? 2 : 0}
